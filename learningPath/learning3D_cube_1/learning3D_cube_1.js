@@ -1,3 +1,6 @@
+//Extra Aufgabe: 'Ein X zeichnen, mit zwei Linien'
+//Hauptaufgabe: 'Eine Linie zeichnen mit Canvas'
+
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext("2d");
 
@@ -8,7 +11,7 @@ function resize(){
 resize();
 window.addEventListener("resize", resize);
 
-//Create a line
+//Eine Linie erstellen
 ctx.strokeStyle = "white";
 ctx.lineWidth = 3;
 
