@@ -10,7 +10,6 @@ let ctx = canvas.getContext("2d");
 function resizeCanvas(){
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    ctx = canvas.getContext("2d");
 }
 resizeCanvas();
 
@@ -77,7 +76,4 @@ function drawPulsatingRectangle(pos_x, pos_y, width, height){
 
     requestAnimationFrame(() => drawPulsatingRectangle(pos_x, pos_y, width, height));
 }
-
-
-
 drawPulsatingRectangle(window.innerWidth/2-150, 100, 300, 200);
