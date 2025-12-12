@@ -14,13 +14,13 @@ canvas.height = window.innerHeight;
 
 
 let points = [
-    {x: 100, y: 0, z: 300},
-    {x: 100, y: 200, z: 100},
-    {x: 200, y: 100, z: 200},
-    {x: 300, y: 300, z: 500}
+    {x: 0, y: 0, z: 300},
+    {x: 200, y: 0, z: 100},
+    {x: -400, y: 0, z: 200},
+    {x: 600, y: 0, z: 500}
 ]
 
-const f = 400; //Zoom-faktor
+const f = 500; //Zoom-faktor
 function projectSimple(x, y, z){
     const scale = f / (f + z)
     return {
@@ -31,13 +31,45 @@ function projectSimple(x, y, z){
 }
 
 
-for (const p of points){
-    const q = projectSimple(p.x, p.y, p.z);
-    ctx.beginPath();
-    ctx.strokeStyle = "white";
-    ctx.lineWidth = 3;
-    ctx.arc(q.x, q.y, 18 * (f / (f+q.z)), 0, Math.PI * 2);
-    ctx.stroke();
+
+let further = 0;
+function loop(){
+    ctx.clearRect(0,0,canvas.width, canvas.height);
+    linesFromMiddle();
+
+    for (const p of points){
+        const q = projectSimple(p.x, p.y, p.z+further);
+        ctx.beginPath();
+        ctx.strokeStyle = "white";
+        //ctx.strokeStyle = "re";
+        ctx.lineWidth = 3;
+        ctx.arc(q.x, q.y, 64 * (f / (f+q.z+further)), 0, Math.PI * 2);
+        ctx.stroke();
+        //ctx.fill();
+    }
+    further += 1;
+    requestAnimationFrame(loop);
 }
+loop();
+
+
+
+function linesFromMiddle(){
+let x = 0;  
+    for(let i = 0; i < 60; i++){
+        ctx.beginPath();
+        ctx.moveTo(window.innerWidth/2, window.innerHeight/2);
+        ctx.lineTo((Math.sin(x+i)*10000)+window.innerWidth/2, (Math.cos(x)*1000)+window.innerHeight/2);
+        ctx.strokeStyle = "red";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        x += 0.001;
+    }
+
+}
+linesFromMiddle();
+
+
 
 
