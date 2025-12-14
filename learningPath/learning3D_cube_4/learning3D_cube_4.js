@@ -9,10 +9,6 @@ const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-
-
-
-
 let points = [
     {x: 0, y: 0, z: 300},
     {x: 200, y: 0, z: 100},
