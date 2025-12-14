@@ -32,12 +32,12 @@ ctx.beginPath();
 let cubeAmount = 5;
 for(let i = 0; i < cubeAmount; i++){
 
-
+h
   for(const [a, b] of cubeEdges){
     
     ctx.moveTo(cube[a].x+move, cube[a].y); 
     ctx.lineTo(cube[b].x+move, cube[b].y); 
-    ctx.lineWidth = 2;
+    ctx.lineWidt = 2;
     ctx.strokeStyle = "white";
   }
 
